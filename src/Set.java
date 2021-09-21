@@ -1,4 +1,4 @@
-public class Set  {
+public class Set implements SetInterface {
 	private static final int INITIAL_AMOUNT_OF_ELEMENTS = 0;
 
     private Identifier[] identiefierArray;
@@ -24,14 +24,18 @@ public class Set  {
     		}
     	} return false;
     }
-    
-    public void addElement (Identifier element) throws Exception {
+
+	public Identifier getElement() {
+		return null;
+	}
+
+	public void addElement (Identifier element) throws Exception {
     	if (checkForPresence(element)) {
     		return;
     	}
     	if (amountOfElements == MAX_ELEMENTS) {
     		throw new Exception("");
-    		
+    		return;
     	}
     	identiefierArray[amountOfElements] = new Identifier(element);
     	amountOfElements += 1;
@@ -63,12 +67,7 @@ public class Set  {
     		for(int j = 0; j < set2.amountOfElements; j++) {
     			
     			if(identiefierArray[i].isIdentical(set2.identiefierArray[j])) { //pakt identiefierArray nu de set die achter . staat?
-    				try {
-						intersection.addElement(set2.identiefierArray[j]);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+    				intersection.addElement(set2.identiefierArray[j]);
     			}
     		}
     	}
@@ -81,7 +80,7 @@ public class Set  {
     	int elementsInUnion = size() + set2.size() - intersection(set2).size();
     	
     	if(elementsInUnion > MAX_ELEMENTS) {
-    		throw new Exception("union"); //make exception work
+    		throw new Exception(); //make exception work
     	}
     	Set union = new Set(set2);
     	
@@ -92,25 +91,19 @@ public class Set  {
     }
     
     public Set difference(Set set2) {
-    	Set difference = new Set(set2);
+    	Set difference = new Set();
     	
     	for(int i = 0; i < amountOfElements; i++) {
-    		for(int j = 0; j < set2.amountOfElements; j++) {
-    			
-    			if(identiefierArray[i].isIdentical(set2.identiefierArray[j])) {
-    				difference.removeElement(identiefierArray[i]);
-    			}
-    		}
+    		
     	}
-    	return difference;
-    }
-    
-    //public Set symmetricDifference() throws Exception{
-    	//int elementsInSymmetricDifference = 
     	
-   // }
-    
-    public void init () {
+    }
+
+	public Set symmetricDifference(Set set2) throws Exception {
+		return null;
+	}
+
+	public void init () {
     	amountOfElements = 0;
     }
 
@@ -138,20 +131,6 @@ public class Set  {
 		}
     	 
     }
-
-
-	@Override
-	public Identifier getElement() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public Set symmetricDifference(Set set2) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
     //public void copyElementTo (Identifier[] dest, Identifier[] src, int copyAtIndex) { // Niet nodig voor deze implementatie
     //	dest.push(Identifier(src[copyAtIndex]));
