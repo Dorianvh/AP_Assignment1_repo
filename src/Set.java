@@ -1,4 +1,4 @@
-public class Set implements SetInterface {
+public class Set  {
 	private static final int INITIAL_AMOUNT_OF_ELEMENTS = 0;
 
     private Identifier[] identiefierArray;
