@@ -26,7 +26,7 @@ public class Identifier {
         add(c);
     }
 
-    private void increaseidentifierize () {
+    private void increaseIdentifiersize () {
         char[] result = new char[2 * charArray.length];
         copyElements(result, charArray, amountOfElements);
         charArray = result;
@@ -34,7 +34,7 @@ public class Identifier {
 
     public void add(char character) {
         if (amountOfElements == charArray.length) {
-            increaseidentifierize();
+            increaseIdentifiersize();
         }
 
         charArray[amountOfElements] = character;

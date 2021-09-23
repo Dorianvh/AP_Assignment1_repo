@@ -1,8 +1,8 @@
 public class Set implements SetInterface {
 	private static final int INITIAL_AMOUNT_OF_ELEMENTS = 0;
 
-    public Identifier[] identifierArray;
-    public int amountOfElements;
+    private Identifier[] identifierArray;
+    private int amountOfElements;
 
     public Set () {
     	identifierArray = new Identifier[INITIAL_AMOUNT_OF_ELEMENTS];
@@ -43,7 +43,7 @@ public class Set implements SetInterface {
     public boolean checkForPresence(Identifier element) {
     	
     	for (int i = 0; i < amountOfElements; i++) {
-    		if(identifierArray[i].isIdentical(element)) { //Method Identical
+    		if(identifierArray[i].isIdentical(element)) {
     			return true;
     		}
     	} return false;
@@ -54,7 +54,7 @@ public class Set implements SetInterface {
     		return;
     	}
     	if (amountOfElements == MAX_ELEMENTS) {
-    		throw new Exception("Maximum size of set reached, cannot add %"); //find placeholder for element
+    		throw new Exception("Maximum size of set reached, cannot add element");
     	}
     	identifierArray[amountOfElements] = new Identifier(element);
     	amountOfElements =+ 1;
@@ -103,7 +103,7 @@ public class Set implements SetInterface {
     	int elementsInUnion = size() + set2.size() - intersection(set2).size();
     	
     	if(elementsInUnion > MAX_ELEMENTS) {
-    		throw new Exception("Cannot cgive union of  % and % since contains more than %maxelements"); //find placeholder
+    		throw new Exception("Cannot give union of sets since contains too many elements");
     	}
     	Set union = new Set(set2);
     	
@@ -134,7 +134,7 @@ public class Set implements SetInterface {
 		int elementsInSymmetricDifference = size() + set2.size() - 2*intersection(set2).size();
     	
     	if(elementsInSymmetricDifference > MAX_ELEMENTS) {
-    		throw new Exception("Cannot give symmetricDifference of % and % sicne it contains more than %maxelements"); //make exception work
+    		throw new Exception("Cannot give symmetricDifference of sets since it contains too many elements");
     	}
     	Set symmetricDifference = new Set();
     	Set union = union(set2);
