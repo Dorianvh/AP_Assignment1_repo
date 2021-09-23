@@ -5,19 +5,28 @@ public class ap1 {
     Scanner input = new Scanner(System.in).useDelimiter("");
     Set firstSet = new Set();
     Set secondSet = new Set();
+    Identifier a = new Identifier();
 
     void start(){
+        try {
+            firstSet.addElement(a);
+        } catch (Exception e){
+
+        }
+
+
+        /*
         char c = nextChar(input);
         if (c != '}') {
-            firstSet.identiefierArray[0].add(c);
+            firstSet.identifierArray[0].add(c);
         }
-        System.out.println(firstSet.identiefierArray[0].print());
+        System.out.println(firstSet.identifierArray[0].print());
+
+         */
     }
 
     char nextChar (Scanner in) {
-        while (in.hasNext()) {
             return in.next().charAt(0);
-        }
     }
 
     public static void main(String[] args) {

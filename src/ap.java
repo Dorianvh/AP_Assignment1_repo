@@ -9,11 +9,6 @@ public class ap {
     void start(){
         getFirstSet();
         getSecondSet();
-
-
-
-      //  System.out.println(firstSet.identiefierArray[0].print());
-     //   System.out.println(secondSet.identiefierArray[0].print());
     }
 
     void getFirstSet(){
@@ -45,7 +40,7 @@ public class ap {
                 if (nextChar(in) == ' ');{
                     set.amountOfElements++;
                 }
-              set.identiefierArray[set.amountOfElements].add(nextChar(in));  ;
+              set.identifierArray[set.amountOfElements].add(nextChar(in));  ;
             }
 
             in.close();
@@ -55,11 +50,7 @@ public class ap {
         return in.next().charAt(0);
     }
 
-
     public static void main(String[] args) {
         new ap().start();
-
     }
-
-
 }

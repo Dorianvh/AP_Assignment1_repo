@@ -1,8 +1,8 @@
 public class Set implements SetInterface {
 	private static final int INITIAL_AMOUNT_OF_ELEMENTS = 0;
 
-    private Identifier[] identifierArray;
-    private int amountOfElements;
+    public Identifier[] identifierArray;
+    public int amountOfElements;
 
     public Set () {
     	identifierArray = new Identifier[INITIAL_AMOUNT_OF_ELEMENTS];
@@ -57,7 +57,7 @@ public class Set implements SetInterface {
     		throw new Exception("Maximum size of set reached, cannot add %"); //find placeholder for element
     	}
     	identifierArray[amountOfElements] = new Identifier(element);
-    	amountOfElements += 1;
+    	amountOfElements =+ 1;
     }
     
     private int getIndex(Identifier element) {
