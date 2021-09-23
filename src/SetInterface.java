@@ -79,4 +79,6 @@ public interface SetInterface {
 			POST - Success: the symmetricdifference of set and set2 is returned
 			 	 - failure: the symmetricdifference of set and set2 consists of more elements than MAX_ELEMENTS
 		 */
+
+	String printSet();
 }

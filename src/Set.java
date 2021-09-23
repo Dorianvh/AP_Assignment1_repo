@@ -148,6 +148,15 @@ public class Set implements SetInterface {
     	}
     	return symmetricDifference;
 	}
+
+	public String printSet(){
+		String result = "";
+		for(int i = 0; i < amountOfElements;){
+			result.concat(identifierArray[i].print());
+		} return result;
+	}
+
+
 }
 
 
