@@ -89,7 +89,7 @@ public class Set implements SetInterface {
     				try {
 						intersection.addElement(set2.identifierArray[j]);
 					} catch (Exception e) {
-						//print?
+						System.out.println(e);
 					} 
     			}
     		}
@@ -152,7 +152,7 @@ public class Set implements SetInterface {
 	public String printSet(){
 		String result = "";
 		for(int i = 0; i < amountOfElements;){
-			result.concat(identifierArray[i].print());
+			result = result.concat(identifierArray[i].print());
 		} return result;
 	}
 
