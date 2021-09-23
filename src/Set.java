@@ -1,110 +1,26 @@
 public class Set implements SetInterface {
 	private static final int INITIAL_AMOUNT_OF_ELEMENTS = 0;
 
-    public Identifier[] identiefierArray;
-    public int amountOfElements;
+    private Identifier[] identifierArray;
+    private int amountOfElements;
 
     public Set () {
-    	identiefierArray = new Identifier[INITIAL_AMOUNT_OF_ELEMENTS];
+    	identifierArray = new Identifier[INITIAL_AMOUNT_OF_ELEMENTS];
     	amountOfElements = 0;
     }
-
+    
+    private void copyElements (Identifier[] dest, Identifier[] src, int amount) {
+    	for (int i = 0; i < amount; i++) {
+    		dest[i] = new Identifier(src[i]);
+    	}
+    }
 
     public Set (Set src) {
-    	identiefierArray = new Identifier[src.identiefierArray.length];
+    	identifierArray = new Identifier[src.identifierArray.length];
     	amountOfElements = src.amountOfElements;
-    	copyElements(identiefierArray, src.identiefierArray, amountOfElements);
+    	copyElements(identifierArray, src.identifierArray, amountOfElements);
     }
     
-    public boolean checkForPresence(Identifier element) {
-    	
-    	for (int i = 0; i < amountOfElements; i++) {
-    		if(identiefierArray[i] == element) { //Method Identical
-    			return true;
-    		}
-    	} return false;
-    }
-
-	public Identifier getElement() {
-		return null;
-	}
-
-	public void addElement (Identifier element) throws Exception {
-    	if (checkForPresence(element)) {
-    		return;
-    	}
-    	if (amountOfElements == MAX_ELEMENTS) {
-    		throw new Exception("");
-
-    	}
-    	identiefierArray[amountOfElements] = new Identifier(element);
-    	amountOfElements += 1;
-    }
-    
-    private int getIndex(Identifier element) {
-    	for (int i = 0; i < amountOfElements; i++) {
-    		if(identiefierArray[i] == element) {
-    			return i;
-    		}
-    	} return 0;
-    }
-    
-    public void removeElement(Identifier element) {
-    	if (checkForPresence(element) == false) {
-    		return;
-    	}
-    	for (int i = amountOfElements; getIndex(element) > i; i--) {
-			identiefierArray [i] = identiefierArray [i - 1];
-		}
-		amountOfElements -= 1;
-    }
-    
-    public Set intersection(Set set2) {
-    	
-    	Set intersection = new Set();
-    	
-    	for(int i = 0; i < amountOfElements; i++) {
-    		for(int j = 0; j < set2.amountOfElements; j++) {
-    			
-    			if(identiefierArray[i].isIdentical(set2.identiefierArray[j])) { //pakt identiefierArray nu de set die achter . staat?
-    				//intersection.addElement(set2.identiefierArray[j]);
-    			}
-    		}
-    	}
-    	return intersection;
-    }
-    
-    
-    public Set union(Set set2) throws Exception{
-    	
-    	int elementsInUnion = size() + set2.size() - intersection(set2).size();
-    	
-    	if(elementsInUnion > MAX_ELEMENTS) {
-    		throw new Exception(); //make exception work
-    	}
-    	Set union = new Set(set2);
-    	
-    	for(int i = 0; i < amountOfElements; i++) {
-    		union.addElement(identiefierArray[i]);
-    	}
-    	return union;
-    }
-    
-    public Set difference(Set set2) {
-    	Set difference = new Set();
-    	
-    	for(int i = 0; i < amountOfElements; i++) {
-    		
-    	}
-
-    	return null;
-    	
-    }
-
-	public Set symmetricDifference(Set set2) throws Exception {
-		return null;
-	}
-
 	public void init () {
     	amountOfElements = 0;
     }
@@ -117,26 +33,121 @@ public class Set implements SetInterface {
     	return amountOfElements;
     }
     
-    //unnecessary methods
-    
-    private void copyElements (Identifier[] dest, Identifier[] src, int amount) { //Niet nodig voor deze implementatie
-    	for (int i = 0; i < amount; i++) {
-    		//dest[i] = new Identifier(src[i]);
-    	}
+    public Identifier getElement() {
+    	double randomNumber = (Math.random()*amountOfElements);
+    	int convertedNumber = (int)randomNumber;
+    	Identifier randomElement = identifierArray[convertedNumber];
+    	return randomElement;
     }
     
-    
-    private void moveElementsForward(int fromPosition) { // niet nodig voor deze implementatie
+    public boolean checkForPresence(Identifier element) {
     	
-    	for (int i = amountOfElements; i >= fromPosition; i--) {
-			identiefierArray [i] = identiefierArray [i+1];
-		}
-    	 
+    	for (int i = 0; i < amountOfElements; i++) {
+    		if(identifierArray[i].isIdentical(element)) { //Method Identical
+    			return true;
+    		}
+    	} return false;
     }
 
-    //public void copyElementTo (Identifier[] dest, Identifier[] src, int copyAtIndex) { // Niet nodig voor deze implementatie
-    //	dest.push(Identifier(src[copyAtIndex]));
-    //}
+	public void addElement (Identifier element) throws Exception {
+    	if (checkForPresence(element)) {
+    		return;
+    	}
+    	if (amountOfElements == MAX_ELEMENTS) {
+    		throw new Exception("Maximum size of set reached, cannot add %"); //find placeholder for element
+    	}
+    	identifierArray[amountOfElements] = new Identifier(element);
+    	amountOfElements += 1;
+    }
+    
+    private int getIndex(Identifier element) {
+    	for (int i = 0; i < amountOfElements; i++) {
+    		if(identifierArray[i] == element) {
+    			return i;
+    		}
+    	} return 0;
+    }
+    
+    public void removeElement(Identifier element) {
+    	if (checkForPresence(element) == false) {
+    		return;
+    	}
+    	for (int i = amountOfElements; getIndex(element) > i; i--) {
+			identifierArray [i] = identifierArray [i - 1];
+		}
+		amountOfElements -= 1;
+    }
+    
+    public Set intersection(Set set2) {
+    	
+    	Set intersection = new Set();
+    	
+    	for(int i = 0; i < amountOfElements; i++) {
+    		for(int j = 0; j < set2.amountOfElements; j++) {
+    			
+    			if(identifierArray[i].isIdentical(set2.identifierArray[j])) {
+    				try {
+						intersection.addElement(set2.identifierArray[j]);
+					} catch (Exception e) {
+						//print?
+					} 
+    			}
+    		}
+    	}
+    	return intersection;
+    }
+    
+    
+    public Set union(Set set2) throws Exception{
+    	
+    	int elementsInUnion = size() + set2.size() - intersection(set2).size();
+    	
+    	if(elementsInUnion > MAX_ELEMENTS) {
+    		throw new Exception("Cannot cgive union of  % and % since contains more than %maxelements"); //find placeholder
+    	}
+    	Set union = new Set(set2);
+    	
+    	for(int i = 0; i < amountOfElements; i++) {
+    		union.addElement(identifierArray[i]);
+    	}
+    	return union;
+    }
+    
+    public Set difference(Set set2) {
+    	Set difference = new Set();
+    	
+    	for(int i = 0; i < amountOfElements; i++) {
+    		for(int j = 0; j < set2.amountOfElements; j++) {
+    			
+    			if(identifierArray[i].isIdentical(set2.identifierArray[j]) == false) {
+    				try {
+						difference.addElement(identifierArray[i]);
+					} catch (Exception e) {
+						//print statement
+					}
+    			}
+    		}
+    	} return difference;
+    }
+
+	public Set symmetricDifference(Set set2) throws Exception {
+		int elementsInSymmetricDifference = size() + set2.size() - 2*intersection(set2).size();
+    	
+    	if(elementsInSymmetricDifference > MAX_ELEMENTS) {
+    		throw new Exception("Cannot give symmetricDifference of % and % sicne it contains more than %maxelements"); //make exception work
+    	}
+    	Set symmetricDifference = new Set();
+    	Set union = union(set2);
+    	Set intersection = intersection(set2);
+    	
+    	for(int i = 0; i < intersection.amountOfElements; i++)
+    		union.removeElement(intersection.identifierArray[i]);
+    	
+    	for(int i = 0; i < amountOfElements; i++) {
+    		symmetricDifference.addElement(intersection.identifierArray[i]);
+    	}
+    	return symmetricDifference;
+	}
 }
 
 
