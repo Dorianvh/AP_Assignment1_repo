@@ -26,15 +26,15 @@ public class Identifier {
         add(c);
     }
 
-    private void increaseIdentifiersize () {
-        char[] result = new char[2 * charArray.length];
+    private void increaseidentifierize () {
+        char[] result = new char[charArray.length + 1];
         copyElements(result, charArray, amountOfElements);
         charArray = result;
     }
 
     public void add(char character) {
         if (amountOfElements == charArray.length) {
-            increaseIdentifiersize();
+            increaseidentifierize();
         }
 
         charArray[amountOfElements] = character;
@@ -50,8 +50,16 @@ public class Identifier {
         return String.valueOf(charArray);
     }
 
-    public boolean isIdentical(Identifier id2){
-        return String.valueOf(id2.charArray) == String.valueOf(charArray);
+    public boolean isIdentical(Identifier id2) {
+        if (amountOfElements != id2.amountOfElements) {
+            return false;
+        }
+        for (int i = 0; i < amountOfElements; i++) {
+            if (charArray[i] != id2.charArray[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

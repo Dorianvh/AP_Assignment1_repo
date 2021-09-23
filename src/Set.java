@@ -1,5 +1,5 @@
 public class Set implements SetInterface {
-	private static final int INITIAL_AMOUNT_OF_ELEMENTS = 0;
+	private static final int INITIAL_AMOUNT_OF_ELEMENTS = 20;
 
     private Identifier[] identifierArray;
     private int amountOfElements;
