@@ -53,7 +53,10 @@ public class ap2 {
 
     void operations(){
         try {
-            firstSet.union(secondSet);
+
+    for (int i = 0; i < firstSet.amountOfElements; i++) {
+         System.out.println(firstSet.identifierArray[i].print());
+    }
         }
         catch (Exception e){
             System.out.println(e);
@@ -67,6 +70,7 @@ public class ap2 {
     void start() {
         getFirstSet();
         getSecondSet();
+        operations();
     }
 
 
