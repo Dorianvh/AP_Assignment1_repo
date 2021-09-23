@@ -2,29 +2,58 @@ import java.util.Scanner;
 
 public class ap {
 
-    Scanner in = new Scanner(System.in).useDelimiter("");
-    Identifier identifier = new Identifier();
+
+     Set firstSet = new Set();
+    Set secondSet = new Set();
 
     void start(){
+        getFirstSet();
+        getSecondSet();
+
+
+
+      //  System.out.println(firstSet.identiefierArray[0].print());
+     //   System.out.println(secondSet.identiefierArray[0].print());
+    }
+
+    void getFirstSet(){
         System.out.println("Give the first set:");
         try {
-            readInput();
+            readInput(firstSet);
         } catch (Exception e){
             System.out.println(e);
         }
-
-        System.out.println(identifier.print());
     }
 
-    void readInput() throws Exception{
-        char c1 = in.next().charAt(0);
-        char c2 = in.next().charAt(0);
-
-            if (c1 != '{'){
-                throw new Exception("Set needs to starts with: } ");
+    void getSecondSet(){
+        System.out.println("Give the second set:");
+        try {
+            readInput(secondSet);
+        } catch (Exception e){
+            System.out.println(e);
         }
     }
 
+    void readInput(Set set) throws Exception{
+        Scanner in = new Scanner(System.in).useDelimiter("");
+
+            if (nextChar(in) != '{'){
+                throw new Exception("Set needs to starts with: } ");
+        }
+            while (in.hasNext()) {
+
+                if (nextChar(in) == ' ');{
+                    set.amountOfElements++;
+                }
+              set.identiefierArray[set.amountOfElements].add(nextChar(in));  ;
+            }
+
+            in.close();
+    }
+
+    char nextChar (Scanner in) {
+        return in.next().charAt(0);
+    }
 
 
     public static void main(String[] args) {

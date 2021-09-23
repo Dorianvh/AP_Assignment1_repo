@@ -1,8 +1,8 @@
 public class Set implements SetInterface {
 	private static final int INITIAL_AMOUNT_OF_ELEMENTS = 0;
 
-    private Identifier[] identiefierArray;
-    private int amountOfElements;
+    public Identifier[] identiefierArray;
+    public int amountOfElements;
 
     public Set () {
     	identiefierArray = new Identifier[INITIAL_AMOUNT_OF_ELEMENTS];
@@ -35,7 +35,7 @@ public class Set implements SetInterface {
     	}
     	if (amountOfElements == MAX_ELEMENTS) {
     		throw new Exception("");
-    		return;
+
     	}
     	identiefierArray[amountOfElements] = new Identifier(element);
     	amountOfElements += 1;
@@ -67,7 +67,7 @@ public class Set implements SetInterface {
     		for(int j = 0; j < set2.amountOfElements; j++) {
     			
     			if(identiefierArray[i].isIdentical(set2.identiefierArray[j])) { //pakt identiefierArray nu de set die achter . staat?
-    				intersection.addElement(set2.identiefierArray[j]);
+    				//intersection.addElement(set2.identiefierArray[j]);
     			}
     		}
     	}
@@ -96,6 +96,8 @@ public class Set implements SetInterface {
     	for(int i = 0; i < amountOfElements; i++) {
     		
     	}
+
+    	return null;
     	
     }
 
