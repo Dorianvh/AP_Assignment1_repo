@@ -52,7 +52,7 @@ public class ap2 {
 
 
     void operations(){
-        try {
+        /*try {
 
     for (int i = 0; i < firstSet.amountOfElements; i++) {
          System.out.println(firstSet.identifierArray[i].print());
@@ -60,7 +60,8 @@ public class ap2 {
         }
         catch (Exception e){
             System.out.println(e);
-        }
+        }*/
+        System.out.println(firstSet.printSet());
 
     }
 

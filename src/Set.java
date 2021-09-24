@@ -89,7 +89,6 @@ public class Set implements SetInterface {
     				try {
 						intersection.addElement(set2.identifierArray[j]);
 					} catch (Exception e) {
-						System.out.println(e);
 					} 
     			}
     		}
@@ -108,8 +107,9 @@ public class Set implements SetInterface {
     	Set union = new Set(set2);
     	
     	for(int i = 0; i < amountOfElements; i++) {
-    		union.addElement(identifierArray[i]);
-    	}
+			union.addElement(identifierArray[i]);
+		}
+
     	return union;
     }
     
@@ -122,8 +122,7 @@ public class Set implements SetInterface {
     			if(identifierArray[i].isIdentical(set2.identifierArray[j]) == false) {
     				try {
 						difference.addElement(identifierArray[i]);
-					} catch (Exception e) {
-						//print statement
+					} catch (Exception e){
 					}
     			}
     		}
@@ -131,32 +130,26 @@ public class Set implements SetInterface {
     }
 
 	public Set symmetricDifference(Set set2) throws Exception {
-		int elementsInSymmetricDifference = size() + set2.size() - 2*intersection(set2).size();
+		Set intersection = intersection(set2);
+		int elementsInSymmetricDifference = size() + set2.size() - 2*intersection.size();
     	
     	if(elementsInSymmetricDifference > MAX_ELEMENTS) {
     		throw new Exception("Cannot give symmetricDifference of sets since it contains too many elements");
     	}
-    	Set symmetricDifference = new Set();
-    	Set union = union(set2);
-    	Set intersection = intersection(set2);
-    	
-    	for(int i = 0; i < intersection.amountOfElements; i++)
-    		union.removeElement(intersection.identifierArray[i]);
-    	
-    	for(int i = 0; i < amountOfElements; i++) {
-    		symmetricDifference.addElement(intersection.identifierArray[i]);
-    	}
+		Set differenceSet1 = difference(set2);
+		Set differenceSet2 = set2.difference(intersection);
+    	Set symmetricDifference = differenceSet1.union(differenceSet2);
+
     	return symmetricDifference;
 	}
 
-	public String printSet(){
+	public String printSet() {
 		String result = "";
-		for(int i = 0; i < amountOfElements;){
+		for (int i = 0; i < amountOfElements; ) {
 			result = result.concat(identifierArray[i].print());
-		} return result;
+		}
+		return result;
 	}
-
-
 }
 
 

@@ -59,24 +59,24 @@ public interface SetInterface {
 
 	Set intersection(Set set2);
 		/*  PRE  - 
-			POST - The intersection of set and set2 is returned
+			POST - returns a new set with copies ofThe intersection of set and set2 is returned
 		 */
 	
 	
 	Set union(Set set2) throws Exception;
 		/*  PRE  - 
-			POST - Success: the union of set and set2 is returned
-			 	   Failure: the union of set and set2 consists of more elements than MAX_ELEMENTS	 
+			POST - Success: Returns a new set containing copies of all the elements in both sets
+			 	   Failure: the union of set and set2 consists of more elements than MAX_ELEMENTS
 		 */	
 	
 	Set difference(Set set2);
 		/*  PRE  - 
-			POST - The difference of set and set2 is returned
+			POST - Returns a new set containing copies of the elements in set that are not in set2
 		 */
 	
 	Set symmetricDifference(Set set2) throws Exception;
 		/*  PRE  - 
-			POST - Success: the symmetricdifference of set and set2 is returned
+			POST - Success: Returns a new set containing copies of the elements in set1 and set2 that are not in their intersection
 			 	 - failure: the symmetricdifference of set and set2 consists of more elements than MAX_ELEMENTS
 		 */
 

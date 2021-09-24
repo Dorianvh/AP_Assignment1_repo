@@ -7,6 +7,8 @@ public class ap1 {
     Set secondSet = new Set();
     Identifier a = new Identifier();
 
+    //print statement met getElement en removeElement
+
     void start(){
         try {
             firstSet.addElement(a);
