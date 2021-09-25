@@ -48,6 +48,10 @@ public class ap1 {
             throw new Exception("Set needs to end with: } ");
         }
 
+        Character.isLetterOrDigit()
+
+
+
 
         for (int i = 1; i < sb.length() - 1;i++){
             if (sb.charAt(i) == ' '){
@@ -99,10 +103,11 @@ public class ap1 {
         String result = "{";
         while(s.size() != 0){
             Identifier randomElement = s.getElement();
-            result.concat(randomElement.print());
+           result = (result+ " " + randomElement.print() );
             s.removeElement(randomElement);
-            result.concat(" ");
-        } result.concat("}");
+
+        }
+        result += " }";
         return result;
     }
 

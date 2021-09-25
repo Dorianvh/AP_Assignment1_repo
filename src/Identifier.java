@@ -1,6 +1,6 @@
 public class Identifier {
 
-    private final static int INITIAL_AMOUNT_OF_ELEMENTS = 10;
+    private final static int INITIAL_AMOUNT_OF_ELEMENTS = 1;
     private char[] charArray;
     private int amountOfElements;
 
