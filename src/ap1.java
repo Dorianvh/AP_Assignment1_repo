@@ -33,13 +33,12 @@ public class ap1 {
         input.useDelimiter("");
 
         if (sb.charAt(0) != '{') {
+
             throw new Exception("Set needs to starts with: { ");
-            return false;
         }
 
         if (sb.charAt(sb.length() - 1) != '}') {
             throw new Exception("Set needs to end with: } ");
-            return false;
         }
 
         char c = nextChar(input);
@@ -50,7 +49,6 @@ public class ap1 {
                 c = nextChar(input);
                 if (!(nextCharIsLetter(input))){
                     throw new Exception("Identifier must start with a letter");
-                    return false;
                 }
                 set.addElement(id);
                 id.init(c);
@@ -58,6 +56,7 @@ public class ap1 {
             }
         }
         set.addElement(id);
+        return true;
 
 
 
