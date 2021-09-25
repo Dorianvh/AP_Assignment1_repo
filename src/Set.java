@@ -105,6 +105,7 @@ public class Set implements SetInterface {
     		throw new Exception("Cannot give union of sets since contains too many elements");
     	}
     	Set union = new Set(set2);
+
     	
     	for(int i = 0; i < amountOfElements; i++) {
 			try{
