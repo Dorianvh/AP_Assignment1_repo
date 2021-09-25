@@ -105,21 +105,21 @@ public class ap1 {
     void calculateAndGiveOutput(Set set1, Set set2){
 
         String difference = printSet(set1.difference(set2));
-        out.printf("Difference = %s", difference);
+        out.printf("Difference = %s /n", difference);
 
         String intersection = printSet(set1.intersection(set2));
-        out.printf("Intersection = %s",intersection);
+        out.printf("Intersection = %s /n",intersection);
 
         try{
             String union = printSet(set1.union(set2));
-            out.printf("Union = %s", union);
+            out.printf("Union = %s /n", union);
         } catch (Exception e){
             System.out.println(e);
         }
 
         try{
             String symmetricDifference = printSet(set1.symmetricDifference(set2));
-            out.printf("Sym. Diff. = %s", symmetricDifference);
+            out.printf("Sym. Diff. = %s /n", symmetricDifference);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -138,5 +138,4 @@ public class ap1 {
     public static void main(String[] args) {
         new ap1().start();
     }
-
 }

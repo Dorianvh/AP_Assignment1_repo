@@ -57,7 +57,7 @@ public class Set implements SetInterface {
     		throw new Exception("Maximum size of set reached, cannot add element");
     	}
     	identifierArray[amountOfElements] = new Identifier(element);
-    	amountOfElements =+ 1;
+    	amountOfElements++;
     }
     
     private int getIndex(Identifier element) {
@@ -75,7 +75,7 @@ public class Set implements SetInterface {
     	for (int i = amountOfElements; getIndex(element) > i; i--) {
 			identifierArray [i] = identifierArray [i - 1];
 		}
-		amountOfElements -= 1;
+		amountOfElements--;
     }
     
     public Set intersection(Set set2) {
