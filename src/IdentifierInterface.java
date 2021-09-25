@@ -15,7 +15,7 @@ public interface IdentifierInterface {
     /*
     Identifier(Identifier src):
     PRE:
-    POST(): new Identifier containg copy of elements of src
+    POST(): new Identifier containing copy of elements of src
      */
     void init(char c);
     /*

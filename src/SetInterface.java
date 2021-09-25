@@ -79,6 +79,4 @@ public interface SetInterface {
 			POST - Success: Returns a new set containing copies of the elements in set1 and set2 that are not in their intersection
 			 	 - failure: the symmetricdifference of set and set2 consists of more elements than MAX_ELEMENTS
 		 */
-
-	String printSet();
 }

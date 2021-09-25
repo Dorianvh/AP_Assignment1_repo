@@ -107,7 +107,11 @@ public class Set implements SetInterface {
     	Set union = new Set(set2);
     	
     	for(int i = 0; i < amountOfElements; i++) {
-			union.addElement(identifierArray[i]);
+			try{
+				union.addElement(identifierArray[i]);
+			} catch (Exception e){
+
+			}
 		}
 
     	return union;
@@ -143,13 +147,13 @@ public class Set implements SetInterface {
     	return symmetricDifference;
 	}
 
-	public String printSet() {
+	/*public String printSet() {
 		String result = "";
 		for (int i = 0; i < amountOfElements; ) {
 			result = result.concat(identifierArray[i].print());
 		}
 		return result;
-	}
+	}*/
 }
 
 

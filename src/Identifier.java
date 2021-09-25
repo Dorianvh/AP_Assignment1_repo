@@ -45,11 +45,6 @@ public class Identifier {
         return amountOfElements;
     }
 
-
-    public String print() {
-        return String.valueOf(charArray);
-    }
-
     public boolean isIdentical(Identifier id2) {
         if (amountOfElements != id2.amountOfElements) {
             return false;
@@ -62,4 +57,7 @@ public class Identifier {
         return true;
     }
 
+    public String print() {
+        return String.valueOf(charArray);
+    }
 }

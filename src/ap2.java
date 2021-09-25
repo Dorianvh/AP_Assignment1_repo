@@ -61,7 +61,7 @@ public class ap2 {
         catch (Exception e){
             System.out.println(e);
         }*/
-        System.out.println(firstSet.printSet());
+        //System.out.println(firstSet.printSet());
 
     }
 

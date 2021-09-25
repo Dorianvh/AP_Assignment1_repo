@@ -62,6 +62,7 @@ public class ap1 {
 
 
 
+
     }
 
     boolean nextCharIsLetter (Scanner in) {
@@ -73,9 +74,41 @@ public class ap1 {
         return in.hasNext(Pattern.quote(c+""));
     }
 
-    Set calculateAndGiveOutput(Set set1, Set set2){
-        //give union etc
+
+    String printSet(Set s){
+        String result = "{";
+        while(s.size() != 0){
+            Identifier randomElement = s.getElement();
+            result.concat(randomElement.print());
+            s.removeElement(randomElement);
+            result.concat(" ");
+        } result.concat("}");
+        return result;
     }
+
+    void calculateAndGiveOutput(Set set1, Set set2){
+
+        String difference = printSet(set1.difference(set2));
+        out.printf("Difference = %s", difference);
+
+        String intersection = printSet(set1.intersection(set2));
+        out.printf("Intersection = %s",intersection);
+
+        try{
+            String union = printSet(set1.union(set2));
+            out.printf("Union = %s", union);
+        } catch (Exception e){
+            System.out.println(e);
+        }
+
+        try{
+            String symmetricDifference = printSet(set1.symmetricDifference(set2));
+            out.printf("Sym. Diff. = %s", symmetricDifference);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
 
     void start () {
         Scanner in = new Scanner(System.in);
@@ -85,6 +118,7 @@ public class ap1 {
             calculateAndGiveOutput(set1, set2);
         }
     }
+
     public static void main(String[] args) {
         new ap1().start();
     }
