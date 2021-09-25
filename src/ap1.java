@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.io.PrintStream;
+import java.util.regex.Pattern;
 
 public class ap1 {
 
@@ -26,13 +27,50 @@ public class ap1 {
     }
 
     boolean inputContainsCorrectSet(Scanner input, Set set) throws Exception{
-        //check for {} and correct " " delimeters
+        Identifier id = new Identifier();
+        StringBuffer sb = new StringBuffer();
+        sb.append(input.nextLine());
         input.useDelimiter("");
-        if (nextChar(input) != '{') {
+
+        if (sb.charAt(0) != '{') {
             throw new Exception("Set needs to starts with: { ");
             return false;
         }
 
+        if (sb.charAt(sb.length() - 1) != '}') {
+            throw new Exception("Set needs to end with: } ");
+            return false;
+        }
+
+        char c = nextChar(input);
+        while (c != '}' ){
+            id.add(c);
+            c = nextChar(input);
+            if (c == ' '){
+                c = nextChar(input);
+                if (!(nextCharIsLetter(input))){
+                    throw new Exception("Identifier must start with a letter");
+                    return false;
+                }
+                set.addElement(id);
+                id.init(c);
+                c = nextChar(input);
+            }
+        }
+        set.addElement(id);
+
+
+
+
+    }
+
+    boolean nextCharIsLetter (Scanner in) {
+        return in.hasNext("[a-zA-Z]");
+    }
+
+
+    boolean nextCharIs(Scanner in, char c) {
+        return in.hasNext(Pattern.quote(c+""));
     }
 
     Set calculateAndGiveOutput(Set set1, Set set2){
