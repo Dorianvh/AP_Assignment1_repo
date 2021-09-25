@@ -5,10 +5,10 @@ import java.util.regex.Pattern;
 public class ap1 {
 
     static final int MAX_NUMBER_OF_ELEMENTS = 10;
-    PrintStream out;
+    PrintStream out = System.out;
 
 
-    boolean askSet (Scanner input, String question, Set set) {
+    boolean askSet (Scanner input, String question, Set set) throws Exception {
         do {out.printf("%s", question);
             if (! input.hasNextLine()) {
                 out.printf("\n"); // otherwise line with ^D will be overwritten
@@ -19,14 +19,21 @@ public class ap1 {
     }
 
     boolean askBothSets (Scanner input, Set set1, Set set2) {
-        return askSet(input, "Give first set : ", set1) && askSet(input, "Give second set : ", set2);
+        try {
+           boolean result = askSet(input, "Give first set : ", set1) && askSet(input, "Give second set : ", set2);
+           return result;
+        } catch (Exception e) {
+           System.out.println(e);
+        }
+
+        return true;
     }
 
     char nextChar (Scanner in) {
         return in.next().charAt(0);
     }
 
-    boolean inputContainsCorrectSet(Scanner input, Set set) throws Exception{
+    boolean inputContainsCorrectSet(Scanner input, Set set) throws Exception {
         Identifier id = new Identifier();
         StringBuffer sb = new StringBuffer();
         sb.append(input.nextLine());
@@ -42,12 +49,12 @@ public class ap1 {
         }
 
         char c = nextChar(input);
-        while (c != '}' ){
+        while (c != '}' ) {
             id.add(c);
             c = nextChar(input);
-            if (c == ' '){
+            if (c == ' ') {
                 c = nextChar(input);
-                if (!(nextCharIsLetter(input))){
+                if (!(nextCharIsLetter(input))) {
                     throw new Exception("Identifier must start with a letter");
                 }
                 set.addElement(id);
@@ -57,11 +64,6 @@ public class ap1 {
         }
         set.addElement(id);
         return true;
-
-
-
-
-
     }
 
     boolean nextCharIsLetter (Scanner in) {
