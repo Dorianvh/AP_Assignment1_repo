@@ -48,6 +48,19 @@ public class ap1 {
             throw new Exception("Set needs to end with: } ");
         }
 
+        for (int i = 1; i < sb.length() - 1;i++){
+            if (sb.charAt(i) == ' '){
+                set.addElement(id);
+                i++;
+                id.init(sb.charAt(i));
+
+            }
+            id.add(sb.charAt(i));
+            return true;
+        }
+
+        /*
+
         char c = nextChar(input);
         while (c != '}' ) {
             id.add(c);
@@ -64,6 +77,8 @@ public class ap1 {
         }
         set.addElement(id);
         return true;
+
+         */
     }
 
     boolean nextCharIsLetter (Scanner in) {
