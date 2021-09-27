@@ -34,9 +34,9 @@ public class Set implements SetInterface {
     }
     
     public Identifier getElement() {
-    	//double randomNumber = (Math.random()*amountOfElements);
-    	//int convertedNumber = (int)randomNumber;
-    	//Identifier randomElement = identifierArray[convertedNumber];
+    //	double randomNumber = (Math.random()*amountOfElements);
+    //	int convertedNumber = (int)randomNumber;
+    //	Identifier randomElement = identifierArray[convertedNumber];
 		Identifier randomElement = identifierArray[amountOfElements-1];
     	return randomElement;
     }
@@ -73,10 +73,11 @@ public class Set implements SetInterface {
     	if (checkForPresence(element) == false) {
     		return;
     	}
-		amountOfElements--;
+
     	for (int i = getIndex(element); i <= amountOfElements; i++) {
 			identifierArray [i] = identifierArray [i + 1];
 		}
+		amountOfElements--;
     }
     
     public Set intersection(Set set2) {
