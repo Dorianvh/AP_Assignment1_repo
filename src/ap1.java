@@ -85,7 +85,7 @@ public class ap1 {
         String result = "{";
         while(s.size() > 0){
             Identifier randomElement = s.getElement();
-           result = (result+ " " + randomElement.print() );
+            result = (result+ " " + randomElement.print() );
             s.removeElement(randomElement);
 
         }
