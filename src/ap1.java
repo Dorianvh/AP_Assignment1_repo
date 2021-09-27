@@ -83,7 +83,7 @@ public class ap1 {
 
     String printSet(Set s){
         String result = "{";
-        while(s.size() != 0){
+        while(s.size() > 0){
             Identifier randomElement = s.getElement();
            result = (result+ " " + randomElement.print() );
             s.removeElement(randomElement);
@@ -92,6 +92,11 @@ public class ap1 {
         result += " }";
         return result;
     }
+
+    /*String print(Set s){
+        s.size()
+
+    }*/
 
     void calculateAndGiveOutput(Set set1, Set set2){
 

@@ -34,9 +34,10 @@ public class Set implements SetInterface {
     }
     
     public Identifier getElement() {
-    	double randomNumber = (Math.random()*amountOfElements);
-    	int convertedNumber = (int)randomNumber;
-    	Identifier randomElement = identifierArray[convertedNumber];
+    	//double randomNumber = (Math.random()*amountOfElements);
+    	//int convertedNumber = (int)randomNumber;
+    	//Identifier randomElement = identifierArray[convertedNumber];
+		Identifier randomElement = identifierArray[amountOfElements-1];
     	return randomElement;
     }
     
@@ -132,6 +133,8 @@ public class Set implements SetInterface {
     		}
     	} return difference;
     }
+
+
 
 	public Set symmetricDifference(Set set2) throws Exception {
 		Set intersection = intersection(set2);
