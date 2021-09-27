@@ -74,10 +74,13 @@ public class Set implements SetInterface {
     		return;
     	}
 
+
+
     	for (int i = getIndex(element); i <= amountOfElements; i++) {
 			identifierArray [i] = identifierArray [i + 1];
 		}
 		amountOfElements--;
+
     }
     
     public Set intersection(Set set2) {
@@ -120,19 +123,17 @@ public class Set implements SetInterface {
     }
     
     public Set difference(Set set2) {
-    	Set difference = new Set();
-    	
-    	for(int i = 0; i < amountOfElements; i++) {
-    		for(int j = 0; j < set2.amountOfElements; j++) {
-    			
-    			if(identifierArray[i].isIdentical(set2.identifierArray[j]) == false) {
-    				try {
-						difference.addElement(identifierArray[i]);
-					} catch (Exception e){
-					}
-    			}
-    		}
-    	} return difference;
+		Set difference = new Set(this);
+		Set intersection = this.intersection(set2);
+		for(int i = 0; i < difference.amountOfElements; i++) {
+			for(int j = 0; j < intersection.amountOfElements; j++) {
+
+				if(difference.identifierArray[i].isIdentical(intersection.identifierArray[j])) {
+					difference.removeElement(intersection.identifierArray[j]);
+				}
+			}
+		}
+		return difference;
     }
 
 
