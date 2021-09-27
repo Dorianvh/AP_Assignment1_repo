@@ -97,8 +97,9 @@ public class ap1 {
         out.printf("Intersection = %s %n",intersection);
 
         try{
-            String union = printSet(set1.union(set2));
-            out.printf("Union = %s %n", union);
+            Set union = set1.union(set2);
+            String printUnion = printSet(union);
+            out.printf("Union = %s %n", printUnion);
         } catch (Exception e){
             System.out.println(e);
         }

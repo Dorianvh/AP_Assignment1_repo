@@ -106,7 +106,6 @@ public class Set implements SetInterface {
     	}
     	Set union = new Set(set2);
 
-    	
     	for(int i = 0; i < amountOfElements; i++) {
 			try{
 				union.addElement(identifierArray[i]);
