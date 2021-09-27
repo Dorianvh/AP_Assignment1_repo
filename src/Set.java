@@ -62,7 +62,7 @@ public class Set implements SetInterface {
     
     private int getIndex(Identifier element) {
     	for (int i = 0; i < amountOfElements; i++) {
-    		if(identifierArray[i] == element) {
+    		if(identifierArray[i].isIdentical(element)) {
     			return i;
     		}
     	} return 0;
@@ -72,10 +72,10 @@ public class Set implements SetInterface {
     	if (checkForPresence(element) == false) {
     		return;
     	}
-    	for (int i = amountOfElements; getIndex(element) > i; i--) {
-			identifierArray [i] = identifierArray [i - 1];
-		}
 		amountOfElements--;
+    	for (int i = getIndex(element); i <= amountOfElements; i++) {
+			identifierArray [i] = identifierArray [i + 1];
+		}
     }
     
     public Set intersection(Set set2) {
@@ -147,13 +147,13 @@ public class Set implements SetInterface {
     	return symmetricDifference;
 	}
 
-	/*public String printSet() {
+	public String printSet() {
 		String result = "";
 		for (int i = 0; i < amountOfElements; ) {
 			result = result.concat(identifierArray[i].print());
 		}
 		return result;
-	}*/
+	}
 }
 
 
