@@ -1,12 +1,10 @@
 import java.util.Scanner;
 import java.io.PrintStream;
-import java.util.regex.Pattern;
 
 public class ap1 {
 
     static final int MAX_NUMBER_OF_ELEMENTS = 10;
     PrintStream out = System.out;
-
 
     boolean askSet (Scanner input, String question, Set set) throws Exception {
         do {out.printf("%s", question);
@@ -21,7 +19,7 @@ public class ap1 {
     boolean askBothSets (Scanner input, Set set1, Set set2) {
         try {
            boolean result = askSet(input, "Give first set : ", set1) && askSet(input, "Give second set : ", set2);
-           return result;
+            return result;
         } catch (Exception e) {
            System.out.println(e);
         }
@@ -29,16 +27,11 @@ public class ap1 {
         return true;
     }
 
-    char nextChar (Scanner in) {
-        return in.next().charAt(0);
-    }
-
     boolean inputContainsCorrectSet(Scanner input, Set set) throws Exception {
         Identifier id = new Identifier();
         StringBuffer sb = new StringBuffer();
         sb.append(input.nextLine());
         input.useDelimiter("");
-        Character character;
 
         if (sb.charAt(0) != '{') {
             throw new Exception("Set needs to starts with: { ");
@@ -63,6 +56,7 @@ public class ap1 {
                 id.init(sb.charAt(i));
                 i++;
             }
+
             if (!(isLetterOrDigit(sb.charAt(i)))){
                 throw new Exception("Identifier can only contain alphanumeric characters");
             }
@@ -80,23 +74,16 @@ public class ap1 {
         return Character.isLetter(a);
     }
 
-
     String printSet(Set s){
         String result = "{";
         while(s.size() > 0){
             Identifier randomElement = s.getElement();
             result = (result+ " " + randomElement.print() );
             s.removeElement(randomElement);
-
         }
         result += " }";
         return result;
     }
-
-    /*String print(Set s){
-        s.size()
-
-    }*/
 
     void calculateAndGiveOutput(Set set1, Set set2){
 
@@ -107,8 +94,7 @@ public class ap1 {
         out.printf("Intersection = %s %n",intersection);
 
         try{
-            Set union = set1.union(set2);
-            String printUnion = printSet(union);
+            String printUnion = printSet(set1.union(set2));
             out.printf("Union = %s %n", printUnion);
         } catch (Exception e){
             System.out.println(e);
@@ -122,13 +108,14 @@ public class ap1 {
         }
     }
 
-
     void start () {
         Scanner in = new Scanner(System.in);
         Set set1 = new Set();
         Set set2 = new Set();
         while (askBothSets(in, set1, set2)) {
             calculateAndGiveOutput(set1, set2);
+            set1 = new Set();
+            set2 = new Set();
         }
     }
 

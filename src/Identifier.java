@@ -1,4 +1,4 @@
-public class Identifier {
+public class Identifier implements IdentifierInterface {
 
     private final static int INITIAL_AMOUNT_OF_ELEMENTS = 1;
     private char[] charArray;
@@ -26,7 +26,7 @@ public class Identifier {
         add(c);
     }
 
-    private void increaseidentifierize () {
+    private void increaseIdentifierSize () {
         char[] result = new char[charArray.length + 1];
         copyElements(result, charArray, amountOfElements);
         charArray = result;
@@ -34,7 +34,7 @@ public class Identifier {
 
     public void add(char character) {
         if (amountOfElements == charArray.length) {
-            increaseidentifierize();
+            increaseIdentifierSize();
         }
 
         charArray[amountOfElements] = character;
@@ -43,6 +43,10 @@ public class Identifier {
 
     public int size() {
         return amountOfElements;
+    }
+
+    public char getElement(int position) {
+        return charArray[position];
     }
 
     public boolean isIdentical(Identifier id2) {

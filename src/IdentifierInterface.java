@@ -29,8 +29,7 @@ public interface IdentifierInterface {
     POST:c is add to the end of row of elements
      */
 
-
-    int size ();
+    int size();
     /*
     PRE:
     POST: numberOfElements is returned
@@ -43,10 +42,14 @@ public interface IdentifierInterface {
      */
 
     boolean isIdentical(Identifier id2);
-        /*
-        PRE:
-        POST: return if
-         */
+    /*
+     PRE:
+     POST: return if identifier is equel to id2.
+      */
 
-
+    public String print();
+    /*
+    PRE:
+    POST: returns all elements of identifier as a string.
+     */
 }

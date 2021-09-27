@@ -34,15 +34,11 @@ public class Set implements SetInterface {
     }
     
     public Identifier getElement() {
-    //	double randomNumber = (Math.random()*amountOfElements);
-    //	int convertedNumber = (int)randomNumber;
-    //	Identifier randomElement = identifierArray[convertedNumber];
 		Identifier randomElement = identifierArray[amountOfElements-1];
     	return randomElement;
     }
     
     public boolean checkForPresence(Identifier element) {
-    	
     	for (int i = 0; i < amountOfElements; i++) {
     		if(identifierArray[i].isIdentical(element)) {
     			return true;
@@ -74,13 +70,10 @@ public class Set implements SetInterface {
     		return;
     	}
 
-
-
     	for (int i = getIndex(element); i <= amountOfElements; i++) {
 			identifierArray [i] = identifierArray [i + 1];
 		}
 		amountOfElements--;
-
     }
     
     public Set intersection(Set set2) {
@@ -89,11 +82,11 @@ public class Set implements SetInterface {
     	
     	for(int i = 0; i < amountOfElements; i++) {
     		for(int j = 0; j < set2.amountOfElements; j++) {
-    			
     			if(identifierArray[i].isIdentical(set2.identifierArray[j])) {
     				try {
 						intersection.addElement(set2.identifierArray[j]);
 					} catch (Exception e) {
+						System.out.println(e);
 					} 
     			}
     		}
@@ -103,22 +96,22 @@ public class Set implements SetInterface {
     
     
     public Set union(Set set2) throws Exception{
-    	
+
     	int elementsInUnion = size() + set2.size() - intersection(set2).size();
     	
     	if(elementsInUnion > MAX_ELEMENTS) {
     		throw new Exception("Cannot give union of sets since contains too many elements");
     	}
+
     	Set union = new Set(set2);
 
     	for(int i = 0; i < amountOfElements; i++) {
 			try{
 				union.addElement(identifierArray[i]);
 			} catch (Exception e){
-
+				System.out.println(e);
 			}
 		}
-
     	return union;
     }
     
@@ -145,19 +138,11 @@ public class Set implements SetInterface {
     	if(elementsInSymmetricDifference > MAX_ELEMENTS) {
     		throw new Exception("Cannot give symmetricDifference of sets since it contains too many elements");
     	}
+
 		Set differenceSet1 = difference(set2);
 		Set differenceSet2 = set2.difference(intersection);
     	Set symmetricDifference = differenceSet1.union(differenceSet2);
-
     	return symmetricDifference;
-	}
-
-	public String printSet() {
-		String result = "";
-		for (int i = 0; i < amountOfElements; ) {
-			result = result.concat(identifierArray[i].print());
-		}
-		return result;
 	}
 }
 
