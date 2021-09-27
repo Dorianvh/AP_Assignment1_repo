@@ -55,6 +55,7 @@ public class ap1 {
                 if (!(isLetter(sb.charAt(i)))){
                     throw new Exception("Identifier needs to start with a letter");
                 }
+                id = new Identifier();
                 id.init(sb.charAt(i));
                 i++;
             }
