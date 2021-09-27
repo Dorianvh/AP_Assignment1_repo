@@ -48,6 +48,10 @@ public class ap1 {
             throw new Exception("Set needs to end with: } ");
         }
 
+        if (!(isLetter(sb.charAt(1)))){
+            throw new Exception("Identifier needs to start with a letter");
+        }
+
         for (int i = 1; i < sb.length() - 1;i++){
             if (sb.charAt(i) == ' '){
                 set.addElement(id);
@@ -59,8 +63,9 @@ public class ap1 {
                 id.init(sb.charAt(i));
                 i++;
             }
-
-
+            if (!(isLetterOrDigit(sb.charAt(i)))){
+                throw new Exception("Identifier can only contain alphanumeric characters");
+            }
             id.add(sb.charAt(i));
         }
         set.addElement(id);
