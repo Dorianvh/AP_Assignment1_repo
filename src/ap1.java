@@ -38,9 +38,9 @@ public class ap1 {
         StringBuffer sb = new StringBuffer();
         sb.append(input.nextLine());
         input.useDelimiter("");
+        Character character;
 
         if (sb.charAt(0) != '{') {
-
             throw new Exception("Set needs to starts with: { ");
         }
 
@@ -48,54 +48,30 @@ public class ap1 {
             throw new Exception("Set needs to end with: } ");
         }
 
-        Character.isLetterOrDigit()
-
-
-
-
         for (int i = 1; i < sb.length() - 1;i++){
             if (sb.charAt(i) == ' '){
                 set.addElement(id);
                 i++;
+                if (!(isLetter(sb.charAt(i)))){
+                    throw new Exception("Identifier needs to start with a letter");
+                }
                 id.init(sb.charAt(i));
                 i++;
-
             }
+
+
             id.add(sb.charAt(i));
-
-        }
-        set.addElement(id);
-
-        return true;
-        /*
-
-        char c = nextChar(input);
-        while (c != '}' ) {
-            id.add(c);
-            c = nextChar(input);
-            if (c == ' ') {
-                c = nextChar(input);
-                if (!(nextCharIsLetter(input))) {
-                    throw new Exception("Identifier must start with a letter");
-                }
-                set.addElement(id);
-                id.init(c);
-                c = nextChar(input);
-            }
         }
         set.addElement(id);
         return true;
-
-         */
     }
 
-    boolean nextCharIsLetter (Scanner in) {
-        return in.hasNext("[a-zA-Z]");
+    boolean isLetterOrDigit(char a){
+        return Character.isLetterOrDigit(a);
     }
 
-
-    boolean nextCharIs(Scanner in, char c) {
-        return in.hasNext(Pattern.quote(c+""));
+    boolean isLetter(char a){
+        return Character.isLetter(a);
     }
 
 
