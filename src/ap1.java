@@ -78,7 +78,11 @@ public class ap1 {
         String result = "{";
         while(s.size() > 0){
             Identifier randomElement = s.getElement();
-            result = (result+ " " + randomElement.print() );
+            String element = "";
+            for (int i = 0; i < randomElement.size();i++) {
+                element += randomElement.getElement(i);
+            }
+            result = (result+ " " + element);
             s.removeElement(randomElement);
         }
         result += " }";
@@ -104,7 +108,7 @@ public class ap1 {
             String symmetricDifference = printSet(set1.symmetricDifference(set2));
             out.printf("Sym. Diff. = %s %n", symmetricDifference);
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -114,8 +118,8 @@ public class ap1 {
         Set set2 = new Set();
         while (askBothSets(in, set1, set2)) {
             calculateAndGiveOutput(set1, set2);
-            set1 = new Set();
-            set2 = new Set();
+         //   set1 = new Set();
+        //    set2 = new Set();
         }
     }
 

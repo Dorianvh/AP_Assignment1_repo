@@ -47,9 +47,5 @@ public interface IdentifierInterface {
      POST: return if identifier is equel to id2.
       */
 
-    public String print();
-    /*
-    PRE:
-    POST: returns all elements of identifier as a string.
-     */
+
 }

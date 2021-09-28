@@ -62,7 +62,7 @@ public class Set implements SetInterface {
     		if(identifierArray[i].isIdentical(element)) {
     			return i;
     		}
-    	} return 0;
+    	} return -1;
     }
     
     public void removeElement(Identifier element) {

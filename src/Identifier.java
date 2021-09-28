@@ -60,8 +60,4 @@ public class Identifier implements IdentifierInterface {
         }
         return true;
     }
-
-    public String print() {
-        return String.valueOf(charArray);
-    }
 }
